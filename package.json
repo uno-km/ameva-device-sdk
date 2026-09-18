@@ -1,0 +1,25 @@
+{
+  "name": "ameva-device-sdk",
+  "version": "0.1.0",
+  "description": "Authoritative On-Device Systems Foundation for AMEVA & Android Termux Ecosystem",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "node tests/test_device.js"
+  },
+  "keywords": [
+    "termux",
+    "android",
+    "hardware",
+    "device",
+    "vulkan",
+    "arm64",
+    "storage",
+    "ameva"
+  ],
+  "author": "uno-km / AMEVA Systems Team",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
