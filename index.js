@@ -1,4 +1,8 @@
 /**
+ * Copyright (c) 2026 Uno Kim / AMEVA Foundation. All rights reserved.
+ * SPDX-License-Identifier: Apache-2.0 OR Commercial-License
+ */
+/**
  * ameva-device-sdk
  * ================
  * Authoritative on-device telemetry and storage foundation for Node.js / JavaScript.
