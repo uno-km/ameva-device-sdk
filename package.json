@@ -1,11 +1,11 @@
 {
   "name": "ameva-device-sdk",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Authoritative On-Device Systems Foundation for AMEVA & Android Termux Ecosystem",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "test": "node tests/test_device.js"
+    "test": "node tests/test_device.js && node tests/test_runtime_guard.js"
   },
   "keywords": [
     "termux",

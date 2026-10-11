@@ -38,3 +38,24 @@ export declare function resolvePythonRuntime(): string;
 export declare function verifyFileSha256(filePath: string, expectedSha256: string): Promise<boolean>;
 export declare function verifyFileSha256Sync(filePath: string, expectedSha256: string): boolean;
 export declare function atomicReplace(tempPath: string, targetPath: string): void;
+
+export declare const RUNTIME_REQUIRED_CODE: 'AMU_ERR_RUNTIME_REQUIRED';
+export declare const RUNTIME_REQUIRED_EXIT_CODE: 69;
+export declare class AmevaRuntimeRequiredError extends Error {
+  code: 'AMU_ERR_RUNTIME_REQUIRED';
+  component: string;
+  feature: string;
+  minVersion: string;
+  found: string | null;
+  constructor(component: string, feature: string, minVersion: string, found: string | null);
+}
+export interface RuntimeGuardOptions {
+  minVersion?: string;
+  /** Replaces the installed-version probe; for tests. */
+  probe?: () => string | null;
+}
+export declare function parseVersion(text: string): number[];
+export declare function installedRuntimeVersion(): string | null;
+export declare function runtimeRequiredMessage(component: string, feature: string, minVersion: string, found: string | null): string;
+export declare function requireAmevaRuntime(component: string, feature?: string, options?: RuntimeGuardOptions): string;
+export declare function exitIfRuntimeMissing(component: string, feature?: string, options?: RuntimeGuardOptions): string;

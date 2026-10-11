@@ -209,7 +209,7 @@ def download_file_atomic(
     if user_agent:
         headers["User-Agent"] = user_agent
     else:
-        headers["User-Agent"] = "ameva-device-sdk/0.1.0 (Android; ARM64)"
+        headers["User-Agent"] = "ameva-device-sdk/0.2.0 (Android; ARM64)"
 
     downloaded = 0
     mode = "wb"

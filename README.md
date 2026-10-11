@@ -91,6 +91,29 @@ const searchDirs: string[] = getUnifiedModelSearchDirs('llamacpp');
 const valid = await verifyFileSha256('model.gguf', '<sha256_hash>');
 ```
 
+### GPU runtime guard (0.2.0)
+
+The termux-* packages run on the CPU by themselves. GPU execution comes from `ameva-runtime`
+(AMUDA). Call the guard at the start of every code path that was asked to use the GPU. If the
+runtime is missing or too old, it stops with `AMU_ERR_RUNTIME_REQUIRED`, explains what AMUDA is,
+and prints how to install it. It never falls back to the CPU.
+
+```python
+from ameva_device import require_ameva_runtime, exit_if_runtime_missing
+
+version = require_ameva_runtime("termux-bitnet", "GPU inference", min_version="2.8.0")  # raises
+exit_if_runtime_missing("termux-bitnet", "GPU inference")  # CLI: message on stderr, exit status 69
+```
+
+```javascript
+const { requireAmevaRuntime, exitIfRuntimeMissing } = require('ameva-device-sdk');
+requireAmevaRuntime('termux-bitnet', 'GPU inference', { minVersion: '2.8.0' }); // throws AmevaRuntimeRequiredError
+exitIfRuntimeMissing('termux-bitnet', 'GPU inference'); // CLI: message on stderr, exit status 69
+```
+
+The check confirms that the package is installed at the requested version. It does not prove that
+a GPU works; run `ameva-run doctor` for that.
+
 ---
 
 ## Verification & Compliance

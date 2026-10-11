@@ -317,8 +317,11 @@ function resolvePythonRuntime() {
   return 'python3';
 }
 
+const runtimeGuard = require('./runtime_guard');
+
 module.exports = {
-  version: '0.1.0',
+  ...runtimeGuard,
+  version: '0.2.0',
   isTermux,
   isAndroid,
   isProot,

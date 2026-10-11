@@ -22,7 +22,16 @@ from .storage import (
     verify_file_sha256,
 )
 
-__version__ = "0.1.0"
+from .runtime_guard import (
+    RUNTIME_REQUIRED_CODE,
+    RUNTIME_REQUIRED_EXIT_CODE,
+    AmevaRuntimeRequiredError,
+    exit_if_runtime_missing,
+    installed_runtime_version,
+    require_ameva_runtime,
+)
+
+__version__ = "0.2.0"
 
 __all__ = [
     "__version__",
@@ -41,4 +50,11 @@ __all__ = [
     "check_disk_space",
     "atomic_replace",
     "download_file_atomic",
+    # GPU runtime guard
+    "RUNTIME_REQUIRED_CODE",
+    "RUNTIME_REQUIRED_EXIT_CODE",
+    "AmevaRuntimeRequiredError",
+    "require_ameva_runtime",
+    "exit_if_runtime_missing",
+    "installed_runtime_version",
 ]
